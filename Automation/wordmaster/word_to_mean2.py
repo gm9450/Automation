@@ -144,30 +144,22 @@ day_dicts = []
 for i in range(1, 51):
     day_dicts.append(day(i))
 
-print(day_dicts)
 # Ask the user forday range
-startday = int(input("Enter startday: "))
-endday = int(input("Enter endday: "))
+startday = int(input("처음 시작구간: "))
+endday = int(input("두번째 시작구간: "))
 
 # Retrieve the questions from the specifiedday range
-questions = []
 prev_day = None
+question_test = ""
 for i in range(startday, endday+1):
+    print(f"----day {i} ----", "")
     day_dict = day_dicts[i-1]
-    for question in day_dict.key():
-        if i != prev_day:
-            questions.append((f"----day {i} ----", ""))
-            prev_day = i
-        questions.append((question))
-        
-
-# Ask the user the questions and check the answers
-for question, answer in questions:
-    print(question)
-    if answer.strip() == "":
-        continue
-    user_answer = input()
-    if user_answer == answer[]:
-        print("Correct!")
-    else:
-        print("Incorrect. The correct answer is:", answer)
+    for question, answers in day_dict.items():
+        print(question)
+        user_answer = input()
+        for i1 in range(len(answers)):
+            if user_answer == answers[i1]:
+                print("정답!")
+                break
+            if user_answer != answers and i1 == len(answers)-1:
+                print("정답은 : ", answers)
